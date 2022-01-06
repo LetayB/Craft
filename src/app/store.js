@@ -1,8 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { createStore, combineReducers } from "redux";
+import { craft } from '../features/craft/craftSlice';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+const rootReducer = combineReducers({
+  craft,
+})
+
+
+const store = createStore(
+  rootReducer
+  ,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export default store;
+
+
+
